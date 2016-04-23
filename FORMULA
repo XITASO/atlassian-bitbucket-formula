@@ -1,0 +1,8 @@
+name: atlassian-bitbucket
+os: CentOS
+os_family: RedHat
+version: 201604
+release: 1
+dependencies: java
+summary: Formula for installing Atlassian Bitbucket Server
+description: Formula for installing Atlassian Bitbucket Server

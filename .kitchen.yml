@@ -1,0 +1,28 @@
+driver:
+  name: docker
+
+platforms:
+  - name: centos-7
+    driver_config:
+      image: corux/centos7-salt
+      privileged: True
+      run_command: /usr/sbin/init
+
+provisioner:
+  name: salt_solo
+  formula: atlassian-bitbucket
+  vendor_path: srv/salt
+  pillars-from-files:
+    bitbucket.sls: pillar.example
+  pillars:
+    top.sls:
+      base:
+        "*":
+          - bitbucket
+  state_top:
+    base:
+      "*":
+        - atlassian-bitbucket
+
+suites:
+  - name: default

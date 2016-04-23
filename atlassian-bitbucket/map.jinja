@@ -1,0 +1,17 @@
+{% import_yaml 'atlassian-bitbucket/defaults.yaml' as default_settings %}
+{% set bitbucket = salt['pillar.get']('atlassian-bitbucket', default=default_settings.get('atlassian-bitbucket'), merge=True) %}
+{%- from 'java/map.jinja' import java with context %}
+
+{% do bitbucket.update({
+  'url': bitbucket.get('url', 'https://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-' + bitbucket.version + '.tar.gz'),
+  'url_hash': bitbucket.get('url_hash', 'https://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-' + bitbucket.version + '.tar.gz.md5'),
+  'pid': bitbucket.dir + '/home/bitbucket.pid',
+  'java_home': java.jre8.home,
+  'dirs': {
+    'scripts': bitbucket.dir + '/scripts',
+    'home': bitbucket.dir + '/home',
+    'extract': bitbucket.dir + '/extract',
+    'install': bitbucket.dir + '/install',
+    'current_install': bitbucket.dir ~ '/extract/atlassian-bitbucket-' + bitbucket.version
+  }
+}) %}

@@ -1,0 +1,20 @@
+atlassian-bitbucket:
+  ajp_port: 8009
+  http_port: 7990
+  catalina_opts: -Xms1536m -Xmx1536m
+# see documentation for bitbucket.properties (https://confluence.atlassian.com/bitbucketserver/bitbucket-server-config-properties-776640155.html)
+  config:
+    setup.displayName: Example Bitbucket
+    setup.baseUrl: http://bitbucket.example.com/
+    setup.license: XXXXXXXX
+    setup.sysadmin.username: sysadmin
+    setup.sysadmin.password: password
+    setup.sysadmin.displayName: System Administrator
+    setup.sysadmin.emailAddress: sysadmin@example.com
+    jdbc.driver: org.hsqldb.jdbcDriver
+    jdbc.url: jdbc:hsqldb:${bitbucket.home}/shared/data/db;shutdown=true
+#    jdbc.driver: org.postgresql.Driver
+#    jdbc.url: jdbc:postgresql://localhost:5432/bitbucket
+#    jdbc.user: bitbucket
+#    jdbc.password: bitbucket-password
+#    plugin.auth-crowd.sso.enabled: True
