@@ -75,13 +75,11 @@ bitbucket-server-xsl:
     - name: /tmp/bitbucket-server.xsl
     - source: salt://atlassian-bitbucket/files/server.xsl
     - template: jinja
-    - defaults:
-        config: {{ bitbucket }}
     - require:
       - file: bitbucket-install
 
   cmd.run:
-    - name: 'xsltproc --stringparam pHttpPort "{{ bitbucket.http_port }}" --stringparam pAjpPort "{{ bitbucket.ajp_port }}" -o /tmp/bitbucket-server.xml /tmp/bitbucket-server.xsl server.xml'
+    - name: 'xsltproc --stringparam pHttpPort "{{ bitbucket.get('http_port') }}" --stringparam pAjpPort "{{ bitbucket.get('ajp_port') }}" -o /tmp/bitbucket-server.xml /tmp/bitbucket-server.xsl server.xml'
     - cwd: {{ bitbucket.dirs.install }}/conf
     - require:
       - file: bitbucket-server-xsl
