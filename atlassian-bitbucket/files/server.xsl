@@ -29,7 +29,7 @@
       <!-- Insert AJP Connector, if missing -->
       <xsl:if test="$pAjpPort and not(Connector[@protocol='AJP/1.3'])">
         <xsl:text>&#10;</xsl:text>
-        <Connector port="8009" enableLookups="false" protocol="AJP/1.3" URIEncoding="UTF-8">
+        <Connector port="8009" enableLookups="false" protocol="AJP/1.3" URIEncoding="UTF-8" connectionTimeout="20000">
           <xsl:attribute name="port">
             <xsl:value-of select="$pAjpPort"/>
           </xsl:attribute>
