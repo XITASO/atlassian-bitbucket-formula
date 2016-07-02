@@ -166,6 +166,7 @@ bitbucket-config-file:
     - name: {{ bitbucket.dirs.home }}/shared/bitbucket.properties
     - user: {{ bitbucket.user }}
     - group: {{ bitbucket.group }}
+    - replace: False
     - makedirs: True
     - require:
       - file: bitbucket-home
