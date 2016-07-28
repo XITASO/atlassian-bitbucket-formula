@@ -1,5 +1,5 @@
 atlassian-bitbucket:
-  version: 4.8.2
+  version: 4.8.3
   dir: /opt/atlassian/bitbucket
   ajp_port: 8009
   user: bitbucket
