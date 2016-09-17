@@ -1,5 +1,8 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:param name="pHttpPort" />
+  <xsl:param name="pHttpScheme" />
+  <xsl:param name="pHttpProxyName" />
+  <xsl:param name="pHttpProxyPort" />
   <xsl:param name="pAjpPort" />
 
   <!-- Identity transform -->
@@ -47,6 +50,21 @@
         <xsl:attribute name="port">
           <xsl:value-of select="$pHttpPort"/>
         </xsl:attribute>
+        <xsl:if test="$pHttpScheme">
+          <xsl:attribute name="scheme">
+            <xsl:value-of select="$pHttpScheme"/>
+          </xsl:attribute>
+        </xsl:if>
+        <xsl:if test="$pHttpProxyName">
+          <xsl:attribute name="proxyName">
+            <xsl:value-of select="$pHttpProxyName"/>
+          </xsl:attribute>
+        </xsl:if>
+        <xsl:if test="$pHttpProxyPort">
+          <xsl:attribute name="proxyPort">
+            <xsl:value-of select="$pHttpProxyPort"/>
+          </xsl:attribute>
+        </xsl:if>
         <xsl:apply-templates select="node()"/>
       </xsl:copy>
     </xsl:if>
