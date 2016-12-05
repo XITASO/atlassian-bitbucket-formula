@@ -37,7 +37,7 @@ bitbucket:
     - name: atlassian-bitbucket
     - enable: True
     - require:
-      - file: bitbucket
+      - user: bitbucket
       - pkg: bitbucket-dependencies
 
 bitbucket-graceful-down:
@@ -53,11 +53,7 @@ bitbucket-install:
     - name: {{ bitbucket.dirs.extract }}
     - source: {{ bitbucket.url }}
     - source_hash: {{ bitbucket.url_hash }}
-    - archive_format: tar
-    - tar_options: z
     - if_missing: {{ bitbucket.dirs.current_install }}
-    - user: root
-    - group: root
     - keep: True
     - require:
       - file: bitbucket-extractdir
