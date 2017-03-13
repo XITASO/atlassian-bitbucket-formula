@@ -55,13 +55,24 @@
             <xsl:value-of select="$pHttpScheme"/>
           </xsl:attribute>
         </xsl:if>
+        <xsl:if test="$pHttpScheme = 'https'">
+          <xsl:attribute name="secure">
+            <xsl:value-of select="'true'"/>
+          </xsl:attribute>
+        </xsl:if>
         <xsl:if test="$pHttpProxyName">
           <xsl:attribute name="proxyName">
             <xsl:value-of select="$pHttpProxyName"/>
           </xsl:attribute>
+          <xsl:attribute name="compression">
+            <xsl:value-of select="'off'"/>
+          </xsl:attribute>
         </xsl:if>
         <xsl:if test="$pHttpProxyPort">
           <xsl:attribute name="proxyPort">
+            <xsl:value-of select="$pHttpProxyPort"/>
+          </xsl:attribute>
+          <xsl:attribute name="redirectPort">
             <xsl:value-of select="$pHttpProxyPort"/>
           </xsl:attribute>
         </xsl:if>
