@@ -75,7 +75,7 @@ bitbucket-server-xsl:
       - file: bitbucket-install
 
   cmd.run:
-    - name: 'xsltproc --stringparam pHttpPort "{{ bitbucket.get('http_port') }}" --stringparam pHttpScheme "{{ bitbucket.get('http_scheme') }}" --stringparam pHttpProxyName "{{ bitbucket.get('http_proxyName') }}" --stringparam pHttpProxyPort "{{ bitbucket.get('http_proxyPort') }}" --stringparam pAjpPort "{{ bitbucket.get('ajp_port') }}" -o /tmp/bitbucket-server.xml /tmp/bitbucket-server.xsl server.xml'
+    - name: 'xsltproc --stringparam pHttpPort "{{ bitbucket.get('http_port', '') }}" --stringparam pHttpScheme "{{ bitbucket.get('http_scheme', '') }}" --stringparam pHttpProxyName "{{ bitbucket.get('http_proxyName', '') }}" --stringparam pHttpProxyPort "{{ bitbucket.get('http_proxyPort', '') }}" --stringparam pAjpPort "{{ bitbucket.get('ajp_port', '') }}" -o /tmp/bitbucket-server.xml /tmp/bitbucket-server.xsl server.xml'
     - cwd: {{ bitbucket.dirs.install }}/conf
     - require:
       - file: bitbucket-server-xsl
