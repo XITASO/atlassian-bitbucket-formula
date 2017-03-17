@@ -54,6 +54,7 @@ bitbucket-install:
     - source: {{ bitbucket.url }}
     - source_hash: {{ bitbucket.url_hash }}
     - if_missing: {{ bitbucket.dirs.current_install }}
+    - options: z
     - keep: True
     - require:
       - file: bitbucket-extractdir
@@ -68,14 +69,15 @@ bitbucket-install:
 
 bitbucket-server-xsl:
   file.managed:
-    - name: /tmp/bitbucket-server.xsl
+    - name: {{ bitbucket.dirs.temp }}/server.xsl
     - source: salt://atlassian-bitbucket/files/server.xsl
     - template: jinja
     - require:
       - file: bitbucket-install
+      - file: bitbucket-tempdir
 
   cmd.run:
-    - name: 'xsltproc --stringparam pHttpPort "{{ bitbucket.get('http_port', '') }}" --stringparam pHttpScheme "{{ bitbucket.get('http_scheme', '') }}" --stringparam pHttpProxyName "{{ bitbucket.get('http_proxyName', '') }}" --stringparam pHttpProxyPort "{{ bitbucket.get('http_proxyPort', '') }}" --stringparam pAjpPort "{{ bitbucket.get('ajp_port', '') }}" -o /tmp/bitbucket-server.xml /tmp/bitbucket-server.xsl server.xml'
+    - name: 'xsltproc --stringparam pHttpPort "{{ bitbucket.get('http_port', '') }}" --stringparam pHttpScheme "{{ bitbucket.get('http_scheme', '') }}" --stringparam pHttpProxyName "{{ bitbucket.get('http_proxyName', '') }}" --stringparam pHttpProxyPort "{{ bitbucket.get('http_proxyPort', '') }}" --stringparam pAjpPort "{{ bitbucket.get('ajp_port', '') }}" -o {{ bitbucket.dirs.temp }}/server.xml {{ bitbucket.dirs.temp }}/server.xsl server.xml'
     - cwd: {{ bitbucket.dirs.install }}/conf
     - require:
       - file: bitbucket-server-xsl
@@ -83,7 +85,7 @@ bitbucket-server-xsl:
 bitbucket-server-xml:
   file.managed:
     - name: {{ bitbucket.dirs.install }}/conf/server.xml
-    - source: /tmp/bitbucket-server.xml
+    - source: {{ bitbucket.dirs.temp }}/server.xml
     - require:
       - cmd: bitbucket-server-xsl
     - watch_in:
@@ -110,6 +112,12 @@ bitbucket-home:
 bitbucket-extractdir:
   file.directory:
     - name: {{ bitbucket.dirs.extract }}
+    - use:
+      - file: bitbucket-dir
+
+bitbucket-tempdir:
+  file.directory:
+    - name: {{ bitbucket.dirs.temp }}
     - use:
       - file: bitbucket-dir
 
