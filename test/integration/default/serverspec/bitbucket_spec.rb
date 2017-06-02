@@ -2,6 +2,10 @@ require "serverspec"
 
 set :backend, :exec
 
+describe command('sleep 10s') do
+  its(:exit_status) { should eq 0 }
+end
+
 describe service("atlassian-bitbucket") do
   it { should be_enabled }
   it { should be_running }
