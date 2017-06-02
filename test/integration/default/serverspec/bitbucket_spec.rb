@@ -7,10 +7,6 @@ describe service("atlassian-bitbucket") do
   it { should be_running }
 end
 
-describe port("8009") do
-  it { should be_listening }
-end
-
 describe port("7990") do
   it { should be_listening }
 end

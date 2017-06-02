@@ -1,6 +1,4 @@
 atlassian-bitbucket:
-  ajp_port: 8009
-  http_port: 7990
   catalina_opts: -Xms1536m -Xmx1536m
 # see documentation for bitbucket.properties (https://confluence.atlassian.com/bitbucketserver/bitbucket-server-config-properties-776640155.html)
   config:
@@ -11,6 +9,7 @@ atlassian-bitbucket:
     setup.sysadmin.password: password
     setup.sysadmin.displayName: System Administrator
     setup.sysadmin.emailAddress: sysadmin@example.com
+    server.port: 7990
     jdbc.driver: org.hsqldb.jdbcDriver
     jdbc.url: jdbc:hsqldb:${bitbucket.home}/shared/data/db;shutdown=true
 #    jdbc.driver: org.postgresql.Driver
