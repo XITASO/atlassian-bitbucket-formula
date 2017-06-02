@@ -1,5 +1,6 @@
 atlassian-bitbucket:
-  catalina_opts: -Xms1536m -Xmx1536m
+  env:
+    JVM_MAXIMUM_MEMORY: 1536m
 # see documentation for bitbucket.properties (https://confluence.atlassian.com/bitbucketserver/bitbucket-server-config-properties-776640155.html)
   config:
     setup.displayName: Example Bitbucket

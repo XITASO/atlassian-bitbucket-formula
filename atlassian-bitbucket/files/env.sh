@@ -1,7 +1,6 @@
 #!/bin/sh
-{%- if config.get('catalina_opts') %}
-export CATALINA_OPTS="{{ config.catalina_opts }} ${CATALINA_OPTS}"
-{%- endif %}
+{%- for key, value in config.get('env', {}).items() %}
+export {{ key }}="{{ value }}"
+{%- endfor %}
 export JAVA_HOME={{ config.java_home }}
 export BITBUCKET_HOME={{ config.dirs.home }}
-export CATALINA_PID={{ config.pid }}

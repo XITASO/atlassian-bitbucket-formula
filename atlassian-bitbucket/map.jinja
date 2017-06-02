@@ -5,7 +5,7 @@
 {% do bitbucket.update({
   'url': bitbucket.get('url', 'https://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-' + bitbucket.version + '.tar.gz'),
   'url_hash': bitbucket.get('url_hash', 'https://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-' + bitbucket.version + '.tar.gz.md5'),
-  'pid': bitbucket.dir + '/home/bitbucket.pid',
+  'pid': bitbucket.dir + '/home/log/bitbucket.pid',
   'java_home': java.jre8.home,
   'dirs': {
     'scripts': bitbucket.dir + '/scripts',
