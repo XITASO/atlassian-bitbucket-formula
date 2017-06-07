@@ -2,11 +2,7 @@
 
 include:
   - java
-
-bitbucket-dependencies:
-  pkg.installed:
-    - pkgs:
-      - git
+  - git
 
 bitbucket:
   file.managed:
@@ -37,7 +33,6 @@ bitbucket:
     - enable: True
     - require:
       - user: bitbucket
-      - pkg: bitbucket-dependencies
 
 bitbucket-graceful-down:
   service.dead:
