@@ -1,5 +1,5 @@
 atlassian-bitbucket:
-  version: 5.4.0
+  version: 5.4.1
   dir: /opt/atlassian/bitbucket
   user: bitbucket
   group: bitbucket
