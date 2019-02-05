@@ -3,8 +3,8 @@
 {%- from 'java/map.jinja' import java with context %}
 
 {% do bitbucket.update({
-  'url': bitbucket.get('url', 'https://downloads.atlassian.com/software/stash/downloads/atlassian-bitbucket-' + bitbucket.version + '.tar.gz'),
-  'url_hash': bitbucket.get('url_hash', 'https://downloads.atlassian.com/software/stash/downloads/atlassian-bitbucket-' + bitbucket.version + '.tar.gz.md5'),
+  'url': bitbucket.get('url', 'https://product-downloads.atlassian.com/software/stash/downloads/atlassian-bitbucket-' + bitbucket.version + '.tar.gz'),
+  'url_hash': bitbucket.get('url_hash', 'https://product-downloads.atlassian.com/software/stash/downloads/atlassian-bitbucket-' + bitbucket.version + '.tar.gz.md5'),
   'pid': bitbucket.dir + '/home/log/bitbucket.pid',
   'java_home': java.jre8.home,
   'dirs': {
