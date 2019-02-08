@@ -46,7 +46,7 @@ bitbucket-install:
   archive.extracted:
     - name: {{ bitbucket.dirs.extract }}
     - source: {{ bitbucket.url }}
-    - source_hash: {{ bitbucket.url_hash }}
+    - skip_verify: True
     - if_missing: {{ bitbucket.dirs.current_install }}
     - options: z
     - keep: True
