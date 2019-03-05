@@ -10,7 +10,7 @@ bitbucket:
     - source: salt://atlassian-bitbucket/files/atlassian-bitbucket.service
     - template: jinja
     - defaults:
-        config: {{ bitbucket }}
+        config: {{ bitbucket|json }}
 
   module.wait:
     - name: service.systemctl_reload
@@ -107,7 +107,7 @@ bitbucket-script-{{ file }}:
     - mode: 755
     - template: jinja
     - defaults:
-        config: {{ bitbucket }}
+        config: {{ bitbucket|json }}
     - require:
       - file: bitbucket-scriptdir
       - group: bitbucket
@@ -158,3 +158,4 @@ bitbucket-config-{{ key }}:
     - watch_in:
       - service: bitbucket
 {% endfor %}
+
