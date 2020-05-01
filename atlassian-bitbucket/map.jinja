@@ -6,7 +6,7 @@
   'url': bitbucket.get('url', 'https://product-downloads.atlassian.com/software/stash/downloads/atlassian-bitbucket-' + bitbucket.version + '.tar.gz'),
   'url_hash': bitbucket.get('url_hash', 'https://product-downloads.atlassian.com/software/stash/downloads/atlassian-bitbucket-' + bitbucket.version + '.tar.gz.md5'),
   'pid': bitbucket.dir + '/home/log/bitbucket.pid',
-  'java_home': java.jre8.home,
+  'java_home': java[java.env].home,
   'dirs': {
     'scripts': bitbucket.dir + '/scripts',
     'home': bitbucket.dir + '/home',
