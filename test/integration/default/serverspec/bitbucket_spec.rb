@@ -11,7 +11,13 @@ describe service("atlassian-bitbucket") do
   it { should be_running }
 end
 
+# Bitbucket
 describe port("7990") do
+  it { should be_listening }
+end
+
+# Elasticsearch
+describe port("7992") do
   it { should be_listening }
 end
 
