@@ -47,6 +47,9 @@ bitbucket-install:
     - name: {{ bitbucket.dirs.extract }}
     - source: {{ bitbucket.url }}
     - skip_verify: True
+    - user: root
+    - group: root
+    - trim_output: True
     - if_missing: {{ bitbucket.dirs.current_install }}
     - options: z
     - keep: True
@@ -123,6 +126,7 @@ bitbucket-fix-permission:
       - {{ bitbucket.dirs.install }}/work
       - {{ bitbucket.dirs.install }}/temp
       - {{ bitbucket.dirs.install }}/logs
+      - {{ bitbucket.dirs.install }}/elasticsearch/logs
     - user: {{ bitbucket.user }}
     - group: {{ bitbucket.group }}
     - recurse:
